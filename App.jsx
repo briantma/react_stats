@@ -6,17 +6,33 @@ import MainContainer from './MainContainer';
 class App extends React.Component {
 	constructor(){
 		super();
+		this.componentWillMount = this.componentWillMount.bind(this);
 		this.showAll = this.showAll.bind(this);
 		this.state = {
-			tickets: {}
+			tickets: []
 		}
+	}
+	componentWillMount(){
+		$.ajax({
+			url: "http://localhost:3000/api/tickets/all",
+			dataType: 'jsonp',
+			type: 'GET',
+			success: function(data){
+				console.log("data", data);
+				this.setState({tickets: data});
+				console.log("state", this.state.tickets)
+			}.bind(this),
+			error: function(xhr, status, err){
+				console.log("err", err);
+			}	
+		})
 	}
 	showAll(){
 		// console.log(this);
 		// this.setState({test: "test"});
 		// console.log("state",this.state.test);
 		$.ajax({
-			url: "http://www.mocky.io/v2/57b65f6d0f0000451dae700e",
+			url: "http://localhost:3000/api/tickets/all",
 			dataType: 'jsonp',
 			type: 'GET',
 			success: function(data){
@@ -37,7 +53,7 @@ class App extends React.Component {
 		    <div className="container">     
 		        <div className="row">
 		        	<SideBar
-			         	showAll = {this.showAll}
+			         	
 			        />
 			        <MainContainer
 			        	tickets = {this.state.tickets}

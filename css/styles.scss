@@ -1,3 +1,5 @@
+$brainBlue: rgb(43, 149, 253);
+
 .navbar {
 	&__title{
 		color:white;
@@ -12,10 +14,100 @@
 		padding: 0;
 		font-size:20px;
 		text-align:center;
+		&__item{
+			padding: 5px 0;
+			&:hover{
+				color: $brainBlue;
+				cursor:pointer;
+			}
+			&__active{
+				color: $brainBlue;
+			}
+		}
 
 	}
 }
 
-.mainContainer {
+.ticketModal {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: rgba(0,0,0,0.4);
+	&.hiddenModal{
+		display:none;
+	}
+	.modalContent{
+		background-color: #FFF;
+		width: 500px;
+		min-height: 500px;
+		margin: 55px auto;
+		overflow:hidden;
+		h2 {
+			margin: 10px;
+			i:hover{
+				cursor: pointer;
+				color: $brainBlue;
+			}
+		}
+		table{
+			border-top: 1px solid #EEE;
+		}
+	}
+}
 
+/*styling to make properly scrollable table*/
+section {
+	position: relative;
+	border: 1px solid #EEE;
+	padding-top: 35px;
+	background: #FAFAFA;
+	color: #000;
+} 
+.tableContainer {
+	overflow-y: auto;
+	height: 350px;
+	border-top: #EEE solid 1px;
+	tr:hover {
+		cursor: pointer;
+		background-color: #FAFAFA;
+	}
+}
+table {
+	border-spacing: 0;
+	width:100%;
+	tr {
+		background-color: #FFF;
+	}
+	td + td {
+		border-left:1px solid #eee;
+	}
+	td, th {
+		border-bottom:1px solid #eee;
+		color: #000;
+		padding: 10px 25px;
+	}
+	th {
+		height: 0;
+		line-height: 0;
+		padding-top: 0;
+		padding-bottom: 0;
+		color: transparent;
+		border: none;
+		white-space: nowrap;
+		& div{
+			position: absolute;
+			background: transparent;
+			color: #000;
+			padding: 9px 25px;
+			top: 0;
+			margin-left: -25px;
+			line-height: normal;
+			border-left: 1px solid #EEE;
+		}
+		&:first-child div{
+			border: none;
+		}
+	}
 }
