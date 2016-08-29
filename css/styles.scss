@@ -1,31 +1,70 @@
-$brainBlue: rgb(43, 149, 253);
+$brain-blue: rgb(43, 149, 253);
+$dark-blue: #263239;
+$grey: rgb(229, 229, 229);
+$light-grey: #FAFAFA;
+$light-text: #FFFFFF;
+$white: #FFFFFF;
+$dark-text: #2e3b4e; 
+
+.dashboard {
+	background-color: $light-grey;
+	color: $dark-text;
+	font-family: "Roboto",Arial,"Helvetica Neue",Helvetica,sans-serif;
+	font-weight: 300;
+	min-height: 100vh;
+}
 
 .navbar {
+	border-radius:0px;
+	background-color: #FAFAFA;
 	&__title{
-		color:white;
-		margin:10px;
+		// color:white;
+		margin:10px 0;
 	}
 }
 
 .sideBar {
-
+	width: 200px;
+	background-color: $dark-blue;
+	color: $light-grey;
+	position: fixed;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	padding: 20px;
+	h2 {
+		margin-top: 0;
+		font-size: 24px;
+		font-weight: 400;
+	}
 	&__list{
 		list-style-type: none;
 		padding: 0;
 		font-size:20px;
-		text-align:center;
+		font-weight: 300;
+		text-align:left;
 		&__item{
-			padding: 5px 0;
+			margin: 5px 0;
+			padding-left: 5px;
 			&:hover{
-				color: $brainBlue;
+				color: $white;
 				cursor:pointer;
 			}
 			&__active{
-				color: $brainBlue;
+				color: $white;
+				font-weight: 400;
+				border-left: 4px solid $brain-blue;
+				padding-left: 10px;
 			}
 		}
 
 	}
+}
+
+.mainContainer {
+	margin-left: 200px;
+	padding: 20px;
+	max-width: 1200px;
 }
 
 .ticketModal {
@@ -38,21 +77,25 @@ $brainBlue: rgb(43, 149, 253);
 	&.hiddenModal{
 		display:none;
 	}
-	.modalContent{
-		background-color: #FFF;
-		width: 500px;
-		min-height: 500px;
-		margin: 55px auto;
-		overflow:hidden;
-		h2 {
-			margin: 10px;
-			i:hover{
-				cursor: pointer;
-				color: $brainBlue;
-			}
+	i {
+		position: fixed;
+		top: 20px;
+		right: 20px;
+		font-size: 24px;
+		color: $grey;
+		&:hover{
+			cursor: pointer;
+			color: $white;
 		}
+	}
+	.modalContent{
+		background-color: $white;
+		border-radius: 4px;
+		width: 500px;
+		margin: 55px auto;
+		overflow: hidden;
 		table{
-			border-top: 1px solid #EEE;
+			border-top: 1px solid $grey;
 		}
 	}
 }
@@ -60,32 +103,31 @@ $brainBlue: rgb(43, 149, 253);
 /*styling to make properly scrollable table*/
 section {
 	position: relative;
-	border: 1px solid #EEE;
+	border: 1px solid $grey;
 	padding-top: 35px;
-	background: #FAFAFA;
+	background: $light-grey;
 	color: #000;
 } 
 .tableContainer {
 	overflow-y: auto;
-	height: 350px;
-	border-top: #EEE solid 1px;
+	max-height: 430px;
+	border-top: $grey solid 1px;
 	tr:hover {
 		cursor: pointer;
-		background-color: #FAFAFA;
+		background-color: $light-grey;
 	}
 }
 table {
 	border-spacing: 0;
 	width:100%;
 	tr {
-		background-color: #FFF;
+		background-color: $white;
 	}
 	td + td {
-		border-left:1px solid #eee;
+		border-left:1px solid $grey;
 	}
 	td, th {
-		border-bottom:1px solid #eee;
-		color: #000;
+		border-bottom:1px solid $grey;
 		padding: 10px 25px;
 	}
 	th {
@@ -99,12 +141,13 @@ table {
 		& div{
 			position: absolute;
 			background: transparent;
-			color: #000;
 			padding: 9px 25px;
 			top: 0;
 			margin-left: -25px;
 			line-height: normal;
-			border-left: 1px solid #EEE;
+			border-left: 1px solid $grey;
+			color: $dark-text;
+			text-transform: uppercase;
 		}
 		&:first-child div{
 			border: none;

@@ -29,17 +29,21 @@ class Modal extends React.Component{
 	}
 	render(){
 		var educator_name = this.props.data.educator_name ? this.props.data.educator_name : "UNASSIGNED";
-		var time_spent = this.props.data.status == "CLOSED" ? this.props.data.timeSpent/60000 + "min" : "N/A";
+		var time_spent = this.props.data.status == "CLOSED" ? Math.round(this.props.data.timeSpent/60000 * 10)/10 + "min" : "N/A";
 		var openedAt = new Date(parseInt(this.props.data.openedAt));
 		var startedAt = new Date(parseInt(this.props.data.startedAt));
 		var closedAt = new Date(parseInt(this.props.data.closedAt));
 		console.log(this.props.data.openedAt);
 		return (
 			<div className={this.modalClass()} onClick={() => this.closeModal()}>
+				<i className="fa fa-close" onClick={() => this.closeModal()}></i>
 				<div className="modalContent" onClick={(event) => this.dontClose(event)}>
-					<h2>Ticket ID: {this.props.data.id} <i className="fa fa-close pull-right" onClick={() => this.closeModal()}></i></h2>
 					<table>
 						<tbody>
+							<tr>
+								<td>Ticket ID</td>
+								<td>{this.props.data.id}</td>
+							</tr>
 							<tr>
 								<td>Student</td>
 								<td>{this.props.data.student_name}</td>

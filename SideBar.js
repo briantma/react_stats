@@ -17,8 +17,12 @@ class SideBar extends React.Component{
   		this.setState({selected:value});
   		if (value == "All"){
   			this.props.showAll();
-  		} else if (value = "Students"){
+  		} else if (value == "Students"){
         this.props.showStudents();
+      } else if (value == "Weekly"){
+        this.props.showWeekly();
+      } else if (value == "Educators"){
+        this.props.showEducators();
       }
   		console.log("selected", this.state.selected)
   	}
@@ -27,12 +31,13 @@ class SideBar extends React.Component{
   	}
 	render(){
 		return (
-				<div className="sideBar col-md-2">
+				<div className="sideBar">
+          <h2>Ticket Stats</h2>
 					<ul className="sideBar__list">
 						<li className={this.isActive('All')} onClick={() => this.setActive('All')}>All</li>
 						<li className={this.isActive('Students')} onClick={() => this.setActive('Students')}>Students</li>
-						<li className={this.isActive('b')} onClick={() => this.setActive('b')}>Other</li>
-						<li className={this.isActive('c')} onClick={() => this.setActive('c')}>Other</li>
+            <li className={this.isActive('Weekly')} onClick={() => this.setActive('Weekly')}>Weekly</li>
+            <li className={this.isActive('Educators')} onClick={() => this.setActive('Educators')}>Educators</li>
 					</ul>
 				</div>
 		)
