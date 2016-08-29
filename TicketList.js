@@ -42,7 +42,7 @@ class TicketList extends React.Component {
 		if (this.props.tickets.length > 0){
 			tableRows = this.props.tickets.map((item) => {
 				var educatorName = item.educator_name ? item.educator_name : "UNASSIGNED";
-				var time_spent = item.status == "CLOSED" ? item.timeSpent/60000 + "min" : "N/A";
+				var time_spent = item.status == "CLOSED" ? Math.round((item.timeSpent/60000)*10)/10 + "min" : "N/A";
 				return (
 					<tr key={item.id} onClick={() => this.getTicket(item.id)}>
 						<td>{item.id}</td>

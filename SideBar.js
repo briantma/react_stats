@@ -17,7 +17,9 @@ class SideBar extends React.Component{
   		this.setState({selected:value});
   		if (value == "All"){
   			this.props.showAll();
-  		}
+  		} else if (value = "Students"){
+        this.props.showStudents();
+      }
   		console.log("selected", this.state.selected)
   	}
   	isActive(value){
@@ -28,7 +30,7 @@ class SideBar extends React.Component{
 				<div className="sideBar col-md-2">
 					<ul className="sideBar__list">
 						<li className={this.isActive('All')} onClick={() => this.setActive('All')}>All</li>
-						<li className={this.isActive('a')} onClick={() => this.setActive('a')}>Other</li>
+						<li className={this.isActive('Students')} onClick={() => this.setActive('Students')}>Students</li>
 						<li className={this.isActive('b')} onClick={() => this.setActive('b')}>Other</li>
 						<li className={this.isActive('c')} onClick={() => this.setActive('c')}>Other</li>
 					</ul>

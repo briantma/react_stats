@@ -8,8 +8,10 @@ class App extends React.Component {
 		super();
 		this.componentWillMount = this.componentWillMount.bind(this);
 		this.showAll = this.showAll.bind(this);
+		this.showStudents = this.showStudents.bind(this);
 		this.state = {
-			tickets: []
+			tickets: [],
+			view: "All"
 		}
 	}
 	componentWillMount(){
@@ -28,22 +30,23 @@ class App extends React.Component {
 		})
 	}
 	showAll(){
-		// console.log(this);
-		// this.setState({test: "test"});
-		// console.log("state",this.state.test);
-		$.ajax({
-			url: "http://localhost:3000/api/tickets/all",
-			dataType: 'jsonp',
-			type: 'GET',
-			success: function(data){
-				console.log("data", data);
-				this.setState({tickets: data});
-				console.log("state", this.state.tickets)
-			}.bind(this),
-			error: function(xhr, status, err){
-				console.log("err", err);
-			}	
-		})
+		this.setState({view: "All"});
+		// $.ajax({
+		// 	url: "http://localhost:3000/api/tickets/all",
+		// 	dataType: 'jsonp',
+		// 	type: 'GET',
+		// 	success: function(data){
+		// 		console.log("data", data);
+		// 		this.setState({tickets: data});
+		// 		console.log("state", this.state.tickets)
+		// 	}.bind(this),
+		// 	error: function(xhr, status, err){
+		// 		console.log("err", err);
+		// 	}	
+		// })
+	}
+	showStudents(){
+		this.setState({view:"Students"});
 	}
     render() {
 
@@ -53,10 +56,12 @@ class App extends React.Component {
 		    <div className="container">     
 		        <div className="row">
 		        	<SideBar
-			         	
+			         	showAll = {() => this.showAll()}
+			         	showStudents = {() => this.showStudents()}
 			        />
 			        <MainContainer
 			        	tickets = {this.state.tickets}
+			        	view = {this.state.view}
 			        />
 		        </div>
 	        </div> 
